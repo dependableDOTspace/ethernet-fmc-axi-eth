@@ -15,14 +15,12 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-# XILINX  BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
-# OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# Except as contained in this notice, the name of the Xilinx shall not be used
-# in advertising or otherwise to promote the sale, use or other dealings in
-# this Software without prior written authorization from Xilinx.
+#
 #
 # MODIFICATION HISTORY:
 #
@@ -193,7 +191,7 @@ proc xdefine_axi_target_params {periphs file_handle} {
 	if {$target_periph != ""} {
 		set target_periph_type [get_property IP_NAME $target_periph]
 		set tartget_per_name [get_property NAME $target_periph]
-    set target_periph_name [string toupper [get_property NAME $target_periph]]
+		set target_periph_name [string toupper [get_property NAME $target_periph]]
 		if {$target_periph_type == "axi_fifo_mm_s" || $target_periph_type == "axi_dma" || $target_periph_type == "axi_mcdma"} {
 			set validentry 1
 			set canonical_tag [string toupper [format "AXIETHERNET_%d" $device_id ]]
