@@ -30,6 +30,9 @@ to find the version of this repository that matches your version of the tools.
 * Kintex UltraScale [KCU105 Evaluation board](http://www.xilinx.com/products/boards-and-kits/kcu105.html "KCU105 Evaluation board")
   * LPC connector
   * HPC connector
+* Virtex Ultrascale+ [VCU118 Evaluation Kit](https://www.xilinx.com/products/boards-and-kits/vcu118.html)
+  * HPCP connector (supported but no constraints contained provided currently)
+  * HPC1 connector
 * Virtex-7 [VC707 Evaluation board](http://www.xilinx.com/products/boards-and-kits/ek-v7-vc707-g.html "VC707 Evaluation board")
   * HPC connector 1
   * HPC connector 2
@@ -50,6 +53,7 @@ The only Evaluation boards that can support two Ethernet FMCs simultaneously are
 [KC705](http://www.xilinx.com/products/boards-and-kits/ek-k7-kc705-g.html "KC705 Evaluation board"), 
 [KCU105](http://www.xilinx.com/products/boards-and-kits/kcu105.html "KC705 Evaluation board"), 
 [ZC702](http://www.xilinx.com/products/boards-and-kits/ek-z7-zc702-g.html "ZC702 Evaluation board") 
+[VCU118 Evaluation Kit](https://www.xilinx.com/products/boards-and-kits/vcu118.html)
 and [VC707](http://www.xilinx.com/products/boards-and-kits/ek-v7-vc707-g.html "VC707 Evaluation board").
 
 This repository contains example designs for using 2 x Ethernet FMCs on the same carrier. They all use 8
@@ -63,6 +67,7 @@ These notes provide more details on 8-port support:
 * The KCU105 can support two Ethernet FMCs however the LPC only supports 3 ports so the dual design contains
 only 7 ports total.
 The critical block which does not pass timing requirements is the axi_mem_intercon.
+* The VCU118 can support two Ethernet FMCs and timing closure can be achieved using the AXI-Smartconnect IP instead of AXI Interconnect. This is due to better routing and optimization out of the box. With sufficient time spent, a working design variant can be achieved for the regular AXI Interconnect IP as well.
 * The ZC702 has two FMC connectors that can support the Ethernet FMC, however note that the Zynq device on this board has limited FPGA resources
 for supporting 8 x Xilinx AXI Ethernet IPs (ie. the MACs). The device has enough resources when the 8 MACs are configured with FIFOs, however there are insufficient
 resources to configure them with DMAs. Alternatively, you could use a MAC that requires less resources. (use zc702-lpc2-lpc1.xdc)
@@ -182,6 +187,11 @@ I/Os which do not support 2.5V levels.
 to build a design with 4 ports. The placement error has to do with IDELAYs and I have not reached a solution for this yet. There
 is no such problem with the HPC for this board.
 
+### VCU118
+* This board can only support the 1.8V version Ethernet FMC. The device on this board has only HP (high-performance)
+I/Os which do not support 2.5V levels.
+* Supports double-FMC-ethernet-card/8-port configuration.
+
 ### ZCU102
 
 * These designs support the ZCU102 Rev 1.0 and newer boards. Use a commit before 2016-02-13 for the older Rev-D board design.
@@ -223,7 +233,7 @@ Xilinx SDK installation at this location: `C:\Xilinx\SDK\2019.2\data\boards\boar
 
 ## Microblaze design differences
 
-The designs for AC701, KC705, VC707, VC709 & KCU105 all use the Microblaze soft processor. These designs
+The designs for AC701, KC705, VC707, VC709, KCU105 & VCU118 all use the Microblaze soft processor. These designs
 have some specific differences when compared to the Zynq based designs:
 
 * MIG - the MIG is required to exploit the DDR3/4 memory of the eval boards.
