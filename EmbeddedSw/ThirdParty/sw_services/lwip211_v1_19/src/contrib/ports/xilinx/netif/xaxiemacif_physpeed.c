@@ -33,6 +33,12 @@
 #include "sleep.h"
 #include "xemac_ieee_reg.h"
 
+<<<<<<< HEAD
+=======
+#define IEEE_RGMII_TX_CLOCK_DELAYED_MASK 0x0010
+#define IEEE_RGMII_RX_CLOCK_DELAYED_MASK 0x0020
+
+>>>>>>> upstream/master
 #define PHY_R0_ISOLATE  						0x0400
 #define PHY_DETECT_REG  						1
 #define PHY_IDENTIFIER_1_REG					2
@@ -48,10 +54,13 @@
 #define MARVEL_PHY_88E1116R_MODEL				0x240
 #define PHY_88E1111_RGMII_RX_CLOCK_DELAYED_MASK	0x0080
 
+<<<<<<< HEAD
 #define MARVEL_PHY_88E1510_MODEL                        0x01D0
 #define IEEE_RGMII_TX_CLOCK_DELAYED_MASK 0x0010
 #define IEEE_RGMII_RX_CLOCK_DELAYED_MASK 0x0020
 
+=======
+>>>>>>> upstream/master
 /* TI PHY Flags */
 #define TI_PHY_DETECT_MASK 						0x796D
 #define TI_PHY_IDENTIFIER 						0x2000
@@ -105,6 +114,11 @@
 #define IEEE_CTRL_ISOLATE_DISABLE               0xFBFF
 #endif
 
+<<<<<<< HEAD
+=======
+#define MARVEL_PHY_88E1510_MODEL 0x1D0
+
+>>>>>>> upstream/master
 #define PHY_XILINX_PCS_PMA_ID1			0x0174
 #define PHY_XILINX_PCS_PMA_ID2			0x0C00
 
@@ -664,7 +678,11 @@ unsigned get_IEEE_phy_speed(XAxiEthernet *xaxiemacp)
 		} else if (phy_model == MARVEL_PHY_88E1111_MODEL) {
 			return get_phy_speed_88E1111(xaxiemacp, phy_addr);
 		} else if (phy_model == MARVEL_PHY_88E1510_MODEL) {
+<<<<<<< HEAD
 		        return get_phy_speed_88E1510(xaxiemacp, phy_addr);
+=======
+            return get_phy_speed_88E1510(xaxiemacp, phy_addr);
+>>>>>>> upstream/master
 		}
 	} else if (phy_identifier == TI_PHY_IDENTIFIER) {
 		phy_model = phy_model & TI_PHY_DP83867_MODEL;

@@ -144,8 +144,11 @@
 #define PHY_TI_CRVAL	0x5048
 #define PHY_TI_CFG4RESVDBIT7	0x80
 
+<<<<<<< HEAD
 #define XPAR_GMII2RGMIICON_0N_ETH1_ADDR 8
 
+=======
+>>>>>>> upstream/master
 /* Frequency setting */
 #define SLCR_LOCK_ADDR			(XPS_SYS_CTRL_BASEADDR + 0x4)
 #define SLCR_UNLOCK_ADDR		(XPS_SYS_CTRL_BASEADDR + 0x8)
@@ -169,6 +172,11 @@
 #define IEEE_CTRL_ISOLATE_DISABLE               0xFBFF
 #endif
 
+<<<<<<< HEAD
+=======
+#define XPAR_GMII2RGMIICON_0N_ETH1_ADDR 8
+
+>>>>>>> upstream/master
 u32_t phymapemac0[32];
 u32_t phymapemac1[32];
 
